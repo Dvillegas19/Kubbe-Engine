@@ -12,13 +12,23 @@ Adicionalmente, el runtime fue implementado para Windows con Python 2.7
                       COMO JUGAR
 -------------------------------------------------------------
 
+## Cómo Compilar y Ejecutar
+
+Sigue estos pasos para ejecutar los juegos **Snake** y **Tetris** en tu máquina local:
+
+### 1. Obtener el Proyecto
+Clona este repositorio o descárgalo como archivo ZIP desde el botón `<> Code`:
+
+```bash
+git clone [https://github.com/Dvillegas19/Kubbe-Engine.git](https://github.com/Dvillegas19/Kubbe-Engine.git)
+cd Kubbe-Engine
 Si bien los pasos a seguir para ejecutar correctamente los juegos de tetris y snake programados en Kubbe son sencillos, aun así, vale la pena dejarlos claros para lograr la  ejecución de los programas correctamente evitando cualquier posible inconveniente. Dichos pasos por seguir son los siguientes: 
 
-1. Descargar el archivo llamado “Proyecto Práctico TLP Entregable 3.ZIP” 
+1. Descargar el archivo llamado .ZIP
 
 2. Descomprimir este archivo y entrar a la carpeta resultante.
 
-3. Copiar la ruta de la carpeta descomprimida “Proyecto Práctico TLP Entregable 3”.
+3. Copiar la ruta de la carpeta descomprimida 
 
 4. Abrir una terminal de comandos (CMD), para luego escribir en ella el comando “cd” seguido de un espacio en blanco, y posterior a este pegar la ruta de la carpeta “Proyecto Práctico TLP Entregable 3”, una vez hecho esto solo queda pulsar la tecla enter.
 	
