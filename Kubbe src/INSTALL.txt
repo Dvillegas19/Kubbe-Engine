@@ -1,0 +1,100 @@
+====================================================================
+      Kubbe: Requisitos de Instalacion y Ejecución de juegos ".brick"
+=====================================================================
+
+En este documento se hará la descripción precisa del software necesario y los pasos seguir 
+para compilar y ejecutar los juegos diseñados en el lenguaje Kubbe
+(Para leer la documentación técnica del lenguaje, acceda al documento README adjuntado)
+
+-------------------------------------------------------------
+1. Requisitos de Software
+-------------------------------------------------------------
+
+Este proyecto fue ha sido diseñado para ser extremadamente ligero y compatible con sistemas operativos antiguos, 
+logrando cumplir con la restricción de caber en un disquete y ejecutarse en una máquina con sistema operativo de Windows XP 
+y procesador AMD atlon
+
+----Ficha Técnica---
+Sistema Operativo: Windows XP o superior (Windows 7, 8, 10, 11).
+---Interprete de Python: Se requiere *Python 2.7*----
+    IMPORTANTE: El código NO es compatible con Python 3 o superior.
+    Dependencias: El proyecto completo utiliza unicamente la libreria estandar de Python 2.7. 
+    No es necesario instalar paquetes o módulos adicionales.
+
+
+-------------------------------------------------------------
+2. Estructura de Archivos del Proyecto
+-------------------------------------------------------------
+
+Para asegurar que los archivos funcionen de manera adecuada, asegurese que su carpeta
+se vea de la siguiente manera
+
+    C:\TPL\Proyecto Práctico TLP Entregable 3
+    |
+    +--- compiler.py         (El compilador que traduce .brick a .json)
+    +--- runtime.py          (El motor que ejecuta los juegos .json)
+    +--- jugar.bat           (El script para compilar y jugar facilmente)
+    +--- install.txt         (El archivo que está leyendo actualmente)
+    +--- integrantes.txt     (El archivo con los integrantes que realizaron el proyecto)
+    +--- README.txt          (Documentación con información técnica respecto a Kubbe y su sintaxis)
+    |
+    \--- games\
+         +--- tetris.brick    (Código fuente del juego Tetris)
+         +--- snake.brick     (Código fuente del juego Snake)
+         +--- music.wav       (Banda sonora de los juegos)
+         \---                 (Aqui se generarán los archivos .json)
+    |
+    \--- gramaticasBNF\
+         +--- snake.bnf        (Notación BNF para describir la sintaxis del juego snake)
+         +--- tetris.bnf       (Notación BNF para describir la sintaxis del juego tetris)
+
+
+-------------------------------------------------------------
+3. Como Compilar y Ejecutar un Juego
+-------------------------------------------------------------
+
+    Si bien los pasos a seguir para ejecutar correctamente los juegos de tetris y snake
+    programados en Kubbe son sencillos, aun así, vale la pena dejarlos claros para lograr la
+    ejecución de los programas correctamente evitando cualquier posible inconveniente. Dichos
+    pasos por seguir son los siguientes:
+
+    1.  Descargar el archivo llamado “Proyecto Práctico TLP Entregable 3.ZIP”.
+
+    2.  Descomprimir este archivo y entrar a la carpeta resultante.
+
+    3.  Copiar la ruta de la carpeta descomprimida “Proyecto Práctico TLP Entregable 3”.
+
+    4.  Abrir una terminal de comandos (CMD), para luego escribir en ella el comando “cd” seguido de un espacio en blanco, y posterior a este pegar la ruta de la carpeta “Proyecto Práctico TLP Entregable 3”, una vez echo esto solo queda pulsar la tecla enter.
+    
+    5.  Escribir el comando “jugar” seguido del nombre del juego que deseado; únicamente el
+        nombre del juego, es decir, sin la extensión .brick.
+
+        **Nota**: Si se está ejecutando desde Windows PowerShell, el comando debe ser “.\jugar” y el
+        respectivo juego que se quiere ejecutar
+
+    6. Disfrutar los juegos 
+
+    El script se encargará de llamar al compilador (`compiler.py`) para traducir el código `.brick` a un archivo `.json`.
+    Si la compilación es exitosa, automáticamente ejecutará el motor de juego (`runtime.py`) con el archivo `.json` recién creado.
+
+
+-------------------------------------------------------------
+4. Solución de Problemas Comunes
+-------------------------------------------------------------
+    A continuación, se describen los errores más frecuentes que pueden surgir al compilar o ejecutar juegos en el entorno Kubbe y cómo resolverlos.
+
+    1. Error: 'py' no se reconoce como un comando interno o externo...
+        1.1. Causa: El "Python Launcher for Windows" no está instalado o no se seleccionó durante la instalación de Python.
+
+        1.2. Solución: Reinstala Python 2.7 asegurándote de marcar la opción "Install launcher for all users" y "Add Python to PATH". 
+
+    2. Error: SyntaxError: invalid syntax (generalmente en print o f-strings)
+        2.1. Causa: Se está intentando ejecutar el código con Python 3.X en lugar de Python 2.7. 
+
+        2.2. Solución: Asegúrate de ejecutar siempre los scripts usando el comando py -2.7
+        Nota: Preferiblemente, sigue los pasos descritos en esta guía y utiliza el archivo jugar.bat que ya tiene esta configuración predefinida.
+
+
+
+
+

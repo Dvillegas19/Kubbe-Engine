@@ -1,0 +1,257 @@
+//Archivo configuración para el juego de Tetris moderno
+//Desarrollado por Daniel Villegas, Kevin Rodríguez
+//Se esta haciendo uso del lenguaje Kubbe
+
+//################################################################
+//Parámetros del juego
+//################################################################
+
+nombre~juego ASSIGN ´Tetris moderno´
+version ASSIGN ´Beta cerrada´
+
+//Dimensiones del tablero jugable: ancho y largo
+tablero~moderno ASSIGN {10;20}
+
+//Velocidad de caída de los bloques 
+//Será medida en bloques/segundos
+velocidad ASSIGN 1.5
+
+
+//#################################################################
+//REGLAS GENERALES DEL TETRIS MODERNOS
+//Estarán basadas en el Tetris clásico, pero con ligeras modificaciones
+//para hacerlo más dinámico y con nuevos bloques para mayor entretenimiento :D
+//#################################################################
+
+//Reglas para el comportamiento al completar una línea
+reglas~puntuacion~dinamica ASSIGN BEGIN
+	completar ASSIGN !linea completa!
+	accion ASSIGN !eliminar linea!
+END
+
+
+//Reglas de finalización del juego
+//El juego puede terminar por que no se puedan colocar mas bloques por el tope del tablero
+
+//Regla finalización por no poder colocar mas bloques
+regla~fin~juego~bloques ASSIGN BEGIN
+	condicion ASSIGN !bloque llega al tope!
+END
+
+//##########################################################
+//Controles del juego
+//##########################################################
+//Para dar mayor complejidad al juego, y sabiendo que este es moderno
+//Las teclas seran invertidas
+
+//Definir acciones y con cuales teclas se ejecutan
+controles ASSIGN BEGIN
+	//Movimiento horizontal invertido
+	mover~izquierda ASSIGN ´d´ 
+	mover~derecha ASSIGN ´a´
+
+	//Caida pieza invertida
+    acelerar~abajo ASSIGN ´w´
+	
+	//Caida instantanea 
+	caida ASSIGN ´x´
+	
+	//Rotación de 180 grados instantanea
+	rotacion ASSIGN ´z´	
+	
+    //Controles de estado del juego invertido
+    pausar ASSIGN ´p´
+END
+
+//##################################################
+//Definición de las piezas
+//##################################################
+
+//Se usarán las piezas de tetris 99 y se añadirán nuevas piezas para mayor entrenimiento
+//Piezas tetris antiguo: I, O, T, S, Z, L, J 
+//Piezas nuevas: hueco (cuadrado 3x3 con un hueco en el centro), cruz (forma +), bloque U
+
+
+//Definición piezas clásicas
+bloque~i ASSIGN BEGIN
+	color ASSIGN ´cian´
+	rotaciones ASSIGN {
+
+		//Rotación 0 y 180 (horizontal)
+		{ {0;0;0;0};
+	  	  {1;1;1;1};
+	  	  {0;0;0;0};
+	  	  {0;0;0;0} };
+
+		//Rotación 90 y 270 (vertical)
+		{ {0;1;0;0};
+	  	  {0;1;0;0};
+          {0;1;0;0};
+          {0;1;0;0} }
+	}
+END
+
+bloque~o ASSIGN BEGIN
+	color ASSIGN ´amarillo´
+	rotaciones ASSIGN { 
+		{ {1;1}; 
+	  	  {1;1} } 
+	}
+END
+
+bloque~t ASSIGN BEGIN
+	color ASSIGN ´magenta´
+	rotaciones ASSIGN { 
+		//Rotación 0
+		{ {0;1;0};
+		  {1;1;1}; 
+		  {0;0;0} };
+
+		//Rotación 90
+		{ {0;1;0}; 
+		  {0;1;1}; 
+		  {0;1;0} };
+
+		//Rotación 180
+		{ {0;0;0}; 
+		  {1;1;1}; 
+  		  {0;1;0} };
+
+		//Rotación 270
+		{ {0;1;0}; 
+		  {1;1;0}; 
+		  {0;1;0} }
+	}
+END
+
+bloque~l ASSIGN BEGIN
+	color ASSIGN ´naranja´
+	rotaciones ASSIGN {
+		//Rotación 0
+		{ {0;0;1}; 
+ 		  {1;1;1}; 
+		  {0;0;0} };
+
+		//Rotación 90
+		{ {0;1;0}; 
+		  {0;1;0}; 
+		  {0;1;1} };
+
+		//Rotación 180
+		{ {0;0;0}; 
+		  {1;1;1}; 
+		  {1;0;0} };
+
+		// Rotación 270
+		{ {1;1;0}; 
+		  {0;1;0}; 
+		  {0;1;0} }
+	}
+END
+
+bloque~j ASSIGN BEGIN
+	color ASSIGN ´azul´
+	rotaciones ASSIGN {
+		//Rotación 0
+		{ {1;0;0}; 
+		  {1;1;1}; 
+		  {0;0;0} };
+
+		//Rotación 90
+		{ {0;1;1}; 
+		  {0;1;0}; 
+		  {0;1;0} };
+
+		//Rotación 180
+		{ {0;0;0}; 
+ 		  {1;1;1}; 
+		  {0;0;1} };
+
+		//Rotación 270
+		{ {0;1;0};
+		  {0;1;0}; 
+		  {1;1;0} }
+	}
+END
+
+bloque~s ASSIGN BEGIN
+	color ASSIGN ´verde´
+	rotaciones ASSIGN {
+		//Rotación 0 y 180
+		{ {0;1;1}; 
+		  {1;1;0}; 
+		  {0;0;0} };
+
+		//Rotación 90 y 270
+		{ {0;1;0}; 
+		  {0;1;1}; 
+		  {0;0;1} }
+	}
+END
+
+bloque~z ASSIGN BEGIN
+	color ASSIGN ´rojo´
+	rotaciones ASSIGN {
+		//Rotación 0 y 180
+		{ {1;1;0}; 
+		  {0;1;1}; 
+		  {0;0;0} };
+
+		//Rotación 90 y 270
+		{ {0;0;1}; 
+		  {0;1;1}; 
+		  {0;1;0} }
+	}
+END
+
+
+// Definición de piezas nuevas
+bloque~hueco ASSIGN BEGIN
+	color ASSIGN ´marron´
+	//Este bloque no cambia al rotar
+	rotaciones ASSIGN {
+		{ {1;1;1};
+	 	  {1;0;1};
+		  {1;1;1} }
+	}
+END
+
+
+bloque~cruz ASSIGN BEGIN
+	color ASSIGN ´beige´
+	//Este bloque no cambia al rotar
+	rotaciones ASSIGN {
+		{ {0;1;0};
+		  {1;1;1};
+		  {0;1;0} }
+	}
+END
+
+bloque~u ASSIGN BEGIN
+	color ASSIGN ´rosado´
+	rotaciones ASSIGN {
+		//Rotación 0
+		{ {1;0;1};
+		  {1;1;1};
+		  {0;0;0} };
+
+		//Rotación 90
+		{ {1;1;0};
+		  {1;0;0};
+		  {1;1;0} };
+
+		//Rotación 180
+		{ {0;0;0};
+		  {1;1;1};
+		  {1;0;1} };
+
+		//Rotación 270
+		{ {0;1;1};
+		  {0;0;1};
+		  {0;1;1} }
+	}
+END
+
+
+//Lista de bloques disponibles
+bloques~disponibles ASSIGN { bloque~i; bloque~o; bloque~t; bloque~l; bloque~j; bloque~s; bloque~z; bloque~hueco; bloque~cruz; bloque~u}

@@ -1,0 +1,21 @@
+<juego_snake>    ::= <configuracion> <reglas_juego> <controles>
+
+<configuracion>  ::= <parametro_nombre> <parametro_tablero> <parametro_vel> <parametro_long>
+<parametro_nombre> ::= "nombre~juego" "ASSIGN" <cadena>
+<parametro_tablero>::= "tablero~moderno" "ASSIGN" "{" <numero> ";" <numero> "}"
+
+<reglas_juego>   ::= <bloque_comida> <bloque_velocidad> <bloque_fin>
+
+/* Definición específica del bloque de reglas de comida */
+<bloque_comida>  ::= "reglas~comida" "ASSIGN" "BEGIN" <lista_comidas> "END"
+<lista_comidas>  ::= <def_comida> | <def_comida> <lista_comidas>
+<def_comida>     ::= <identificador> "ASSIGN" "{" <efecto_crecimiento> ";" <efecto_puntos> "}"
+
+<bloque_velocidad>::= "reglas~velocidad" "ASSIGN" "BEGIN" <condicion> <efecto> "END"
+
+/* Definición de condiciones y efectos */
+<condicion>      ::= "condicion" "ASSIGN" (<cadena> | <accion>)
+<efecto>         ::= "efecto" "ASSIGN" <accion>
+
+<controles>      ::= "controles" "ASSIGN" "BEGIN" <mapeo_teclas> "END"
+<mapeo_teclas>   ::= <identificador> "ASSIGN" <cadena>

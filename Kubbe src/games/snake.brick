@@ -1,0 +1,89 @@
+//Archivo configuración para el juego de Snake Moderno
+//Desarrollado por Daniel Villegas, Kevin Rodríguez
+//Se esta haciendo uso del lenguaje Kubbe
+
+//################################################################
+//Parámetros del juego
+//################################################################
+
+nombre~juego ASSIGN ´Snake Moderno´
+version ASSIGN ´Beta cerrada´
+
+//Dimensiones del tablero jugable (ancho x alto)
+tablero~moderno ASSIGN {20;20}
+
+//Velocidad inicial de movimiento de la serpiente (casillas/segundo)
+velocidad ASSIGN 6.0
+
+//Longitud inicial de la serpiente
+longitud ASSIGN 3
+
+//#################################################################
+//REGLAS GENERALES DEL SNAKE MODERNO
+//#################################################################
+
+vidas~iniciales ASSIGN 2
+puntos ASSIGN 0
+
+//Reglas de crecimiento al comer
+//Nota, primero esta cuanto crece el snake y segundo, cuantos puntos gana o pierde este mismo
+reglas~comida ASSIGN BEGIN   
+    comida~normal ASSIGN {+1;+100}
+    comida~dorada ASSIGN {+3;+500}
+    comida~veneno ASSIGN {0;-200}
+END
+
+//Regla de velocidad dinámica
+reglas~velocidad ASSIGN BEGIN
+    condicion ASSIGN ´cada 5 comidas´
+    efecto ASSIGN !aumentar velocidad en 0.2!
+END
+
+//Para que la velocidad no aumente infitamente
+regla~velocidad~maxima ASSIGN BEGIN
+    condicion ASSIGN ´velocidad >= 12.0´
+    efecto ASSIGN !mantener velocidad en 12.0!
+END
+
+
+//#################################################################
+//REGLAS DE APARICIÓN DE COMIDA
+//#################################################################
+
+regla~aparicion~comida ASSIGN BEGIN
+    aparicion~aleatoria ASSIGN ´si´
+    probabilidad~normal ASSIGN 0.6
+    probabilidad~dorada ASSIGN 0.1
+    probabilidad~veneno ASSIGN 0.3
+END
+
+//#################################################################
+//REGLAS DE FINALIZACIÓN DEL JUEGO
+//#################################################################
+
+//La serpiente muere si se queda sin longitud
+regla~fin~longitud ASSIGN BEGIN
+    condicion ASSIGN !longitud <= 0!
+END
+
+//La serpiente muere si se queda sin vidas
+regla~fin~vidas ASSIGN BEGIN
+    condicion ASSIGN !vidas agotadas!
+END
+
+//La serpiente muere si choca consigo misma o contra una pared (salvo modo fantasma)
+regla~fin~colision ASSIGN BEGIN
+    condicion ASSIGN !colision cuerpo o pared!
+END
+
+//#################################################################
+//CONTROLES DEL JUEGO
+//#################################################################
+
+controles ASSIGN BEGIN
+    mover~arriba ASSIGN ´w´
+    mover~abajo ASSIGN ´s´
+    mover~izquierda ASSIGN ´a´
+    mover~derecha ASSIGN ´d´
+    pausar ASSIGN ´p´
+END

@@ -1,0 +1,19 @@
+<juego_tetris>   ::= <configuracion> <reglas_dinamicas> <definicion_piezas>
+
+<reglas_dinamicas> ::= <regla_linea> <regla_fin>
+
+/* Estructura compleja de las piezas del Tetris */
+<definicion_piezas> ::= <bloque_pieza> | <bloque_pieza> <definicion_piezas>
+
+<bloque_pieza>   ::= <identificador> "ASSIGN" "BEGIN" <propiedad_color> <propiedad_rotaciones> "END"
+
+<propiedad_color>::= "color" "ASSIGN" <cadena>
+
+<propiedad_rotaciones> ::= "rotaciones" "ASSIGN" "{" <lista_matrices> "}"
+
+/* Matrices anidadas para las rotaciones: { {0;1}; {1;0} } */
+<lista_matrices> ::= <matriz> | <matriz> ";" <lista_matrices>
+<matriz>         ::= "{" <filas> "}"
+<filas>          ::= <fila> | <fila> ";" <filas>
+<fila>           ::= "{" <celdas> "}"
+<celdas>         ::= ("0" | "1") | ("0" | "1") ";" <celdas>

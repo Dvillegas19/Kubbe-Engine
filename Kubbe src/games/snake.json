@@ -1,0 +1,56 @@
+{
+    "regla~fin~longitud": {
+        "condicion": "longitud <= 0"
+    }, 
+    "tablero~moderno": [
+        20, 
+        20
+    ], 
+    "regla~fin~colision": {
+        "condicion": "colision cuerpo o pared"
+    }, 
+    "velocidad": 6.0, 
+    "controles": {
+        "mover~abajo": "s", 
+        "mover~arriba": "w", 
+        "mover~derecha": "d", 
+        "mover~izquierda": "a", 
+        "pausar": "p"
+    }, 
+    "puntos": 0, 
+    "reglas~velocidad": {
+        "condicion": "cada 5 comidas", 
+        "efecto": "aumentar velocidad en 0.2"
+    }, 
+    "version": "Beta cerrada", 
+    "reglas~comida": {
+        "comida~dorada": [
+            3, 
+            500
+        ], 
+        "comida~normal": [
+            1, 
+            100
+        ], 
+        "comida~veneno": [
+            0, 
+            -200
+        ]
+    }, 
+    "vidas~iniciales": 2, 
+    "regla~aparicion~comida": {
+        "probabilidad~veneno": 0.3, 
+        "probabilidad~normal": 0.6, 
+        "probabilidad~dorada": 0.1, 
+        "aparicion~aleatoria": "si"
+    }, 
+    "regla~velocidad~maxima": {
+        "condicion": "velocidad >= 12.0", 
+        "efecto": "mantener velocidad en 12.0"
+    }, 
+    "regla~fin~vidas": {
+        "condicion": "vidas agotadas"
+    }, 
+    "longitud": 3, 
+    "nombre~juego": "Snake Moderno"
+}
