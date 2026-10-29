@@ -50,33 +50,38 @@ se vea de la siguiente manera
 
 
 -------------------------------------------------------------
-3. Como Compilar y Ejecutar un Juego
+3. Cómo Compilar y Ejecutar un Juego
 -------------------------------------------------------------
 
-    Si bien los pasos a seguir para ejecutar correctamente los juegos de tetris y snake
-    programados en Kubbe son sencillos, aun así, vale la pena dejarlos claros para lograr la
-    ejecución de los programas correctamente evitando cualquier posible inconveniente. Dichos
-    pasos por seguir son los siguientes:
-
-    1.  Descargar el archivo llamado “Proyecto Práctico TLP Entregable 3.ZIP”.
-
-    2.  Descomprimir este archivo y entrar a la carpeta resultante.
-
-    3.  Copiar la ruta de la carpeta descomprimida “Proyecto Práctico TLP Entregable 3”.
-
-    4.  Abrir una terminal de comandos (CMD), para luego escribir en ella el comando “cd” seguido de un espacio en blanco, y posterior a este pegar la ruta de la carpeta “Proyecto Práctico TLP Entregable 3”, una vez echo esto solo queda pulsar la tecla enter.
-    
-    5.  Escribir el comando “jugar” seguido del nombre del juego que deseado; únicamente el
-        nombre del juego, es decir, sin la extensión .brick.
-
-        **Nota**: Si se está ejecutando desde Windows PowerShell, el comando debe ser “.\jugar” y el
-        respectivo juego que se quiere ejecutar
-
-    6. Disfrutar los juegos 
-
-    El script se encargará de llamar al compilador (`compiler.py`) para traducir el código `.brick` a un archivo `.json`.
-    Si la compilación es exitosa, automáticamente ejecutará el motor de juego (`runtime.py`) con el archivo `.json` recién creado.
-
+      Para ejecutar los juegos de Tetris y Snake programados en Kubbe desde el repositorio, sigue estos pasos:
+      
+      1. Clonar o descargar el repositorio desde GitHub:
+         - Opción A (vía Git):
+           git clone https://github.com/Dvillegas19/Kubbe-Engine.git
+         - Opción B (vía ZIP):
+           Haz clic en el botón verde "<> Code" en GitHub y selecciona "Download ZIP", luego desprime el archivo.
+      
+      2. Abrir una terminal de comandos (CMD o PowerShell) y navegar hasta la carpeta del proyecto:
+         cd Kubbe-Engine
+         (o la ruta donde hayas ubicado la carpeta descomprimida)
+      
+      3. Ejecutar el script "jugar" seguido del nombre del juego (sin la extensión .brick):
+      
+         En CMD (Símbolo del sistema):
+             jugar snake
+             jugar tetris
+      
+         En Windows PowerShell:
+             .\jugar.bat snake
+             .\jugar.bat tetris
+      
+      4. Disfrutar el juego.
+      
+      El script automatiza todo el proceso: primero llama al compilador (compiler.py) para traducir el código .brick a un archivo .json y, si la compilación es exitosa, ejecuta inmediatamente el motor de juego (runtime.py).
+      
+      Controles globales en el juego:
+      - Tecla 'p': Pausar / Reanudar
+      - Tecla 'q': Salir
 
 -------------------------------------------------------------
 4. Solución de Problemas Comunes
